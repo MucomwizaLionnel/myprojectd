@@ -1,0 +1,29 @@
+
+<html>
+<head>
+    <title>Liste des Employés</title>
+</head>
+<body>
+    <h1>Liste des Employés</h1>
+    <a href="{% url 'AjouterPersonnel' %}">Ajouter un employé</a>
+    <ul>
+        {% for personnel in personnels %}
+        <li>
+            
+            {{ personnel.nom_prenom}} 
+            
+            {{ personnel.date_naissance}} 
+            {{ personnel.genre}}
+            {{ personnel.qualification}} 
+            {{ personnel.telephone}} 
+            {{ personnel.address}}
+            {{personnel.date_enre}}
+
+            <a href="{% url 'editerpersonnel' personnel.pk %}">Modifier</a>
+            <a href="#">Supprimer</a>
+           
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

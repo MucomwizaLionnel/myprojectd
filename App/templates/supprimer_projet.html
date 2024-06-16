@@ -1,0 +1,15 @@
+<!-- horaires/templates/horaires/employe_confirm_delete.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supprimer Employé</title>
+</head>
+<body>
+    <h1>Confirmer la suppression de {{projet.nom_projet}}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmer</button>
+    </form>
+    <a href="{% url 'listedesprojet' %}">Annuler</a>
+</body>
+</html>

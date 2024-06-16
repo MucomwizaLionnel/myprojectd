@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Formulaire Employé</title>
+</head>
+<body>
+    <h1>{{ form.instance.pk|yesno:"Modifier Employé,Créer Employé" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sauvegarder</button>
+    </form>
+    <a href="{% url 'liste_personnel' %}">Retour à la liste</a>
+</body>

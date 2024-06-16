@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="container2">
+        <h1>Modifier le rapport</h1>
+        <form action="{% url 'uprec' tache.id %}" method="post">
+            {% csrf_token %}
+            <label for="">Date</label><br><br>
+            <input type="date" name="date" value="{{tache.date}}"><br><br>
+            <label for="">Technicien</label><br><br>
+            <input type="text" name="technicien" value="{{tache.technicien}}"><br><br>
+            <label for="">Titre</label><br><br>
+            <input type="text" name="titre" value="{{tache.titre}}"><br><br>
+            <label for="">Description</label><br><br>
+            <textarea type="text" name="description" value="{{tache.description}}"></textarea><br><br>
+            <button type="submit" id="new1">Modifier</button>
+        </form>
+
+    </div>
+</body>
+
+</html>
