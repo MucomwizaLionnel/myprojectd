@@ -12,7 +12,7 @@
     
 <div class="center-text">
     
-    <h1>{{ form.instance.pk|yesno:"Modifier le projet,Ajouter un autre projet" }}</h1>
+    <h1>{{ form.instance.pk|yesno:"Modifier materiel,Ajouter un materiel" }}</h1>
     <div class="input">
     <form method="post">
         {% csrf_token %}
@@ -20,7 +20,7 @@
         <button type="submit">Sauvegarder</button>
     </form>
     </div>
-    <a href="{% url 'listedesprojet' %}">Retour à la liste</a>
+    <a href="{% url 'liste_materiel' %}">Retour à la liste</a>
 
 </div>
 </body>

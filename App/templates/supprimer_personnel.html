@@ -1,11 +1,15 @@
 <!-- horaires/templates/horaires/employe_confirm_delete.html -->
+{% extends "nav.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Supprimer Employé</title>
 </head>
 <body>
-    <h1>Confirmer la suppression de {{personnel.nom_personnel}}?</h1>
+    <br><br><br><br><br>
+    <h1>Confirmer la suppression de {{personnels.nom_prenom}}?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Confirmer</button>
@@ -13,3 +17,4 @@
     <a href="{% url 'liste_personnel' %}">Annuler</a>
 </body>
 </html>
+{%endblock%}

@@ -1,8 +1,11 @@
+{% extends "nav.html" %}
+{% load static %}
 <html>
 <head>
     <title>Formulaire Employé</title>
 </head>
 <body>
+    <br><br><br><br><br>
     <h1>{{ form.instance.pk|yesno:"Modifier Employé,Créer Employé" }}</h1>
     <form method="post">
         {% csrf_token %}

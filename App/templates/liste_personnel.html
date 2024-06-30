@@ -1,9 +1,13 @@
-
+{% extends "nav.html" %}
+{% load static %}
+{% block content%}
 <html>
 <head>
     <title>Liste des Employés</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
 </head>
 <body>
+    <br><br><br><br><br><br>
     <h1>Liste des Employés</h1>
     <a href="{% url 'AjouterPersonnel' %}">Ajouter un employé</a>
     <ul>
@@ -20,10 +24,11 @@
             {{personnel.date_enre}}
 
             <a href="{% url 'editerpersonnel' personnel.pk %}">Modifier</a>
-            <a href="#">Supprimer</a>
+            <a href="{% url 'supprimer_les_personnel' personnel.pk %}">Supprimer</a>
            
         </li>
         {% endfor %}
     </ul>
 </body>
 </html>
+{%endblock%}

@@ -54,3 +54,32 @@ class Projet_form(forms.ModelForm):
             except ValueError:
                 raise ValidationError('La date doit être au format AAAA-MM-JJ.')
         return date
+    
+
+class Materiel_form(forms.ModelForm):
+
+    class Meta:
+        model = Materiel
+        fields = '__all__'
+        widgets = {
+            'date_d_enregistrement': forms.DateInput(attrs={'type': 'date'}),
+            
+        }
+
+    def clean_date_field(self):
+        date = self.cleaned_data['date_field']
+        if date:
+            try:
+                datetime.datetime.strptime(str(date), '%Y-%m-%d')
+            except ValueError:
+                raise ValidationError('La date doit être au format AAAA-MM-JJ.')
+        return date
+class Model:
+    def delete(self):
+        print("Instance deleted")
+
+# Créez une instance de la classe Model
+model_instance = Model()
+
+# Appelez la méthode delete sur l'instance
+model_instance.delete()

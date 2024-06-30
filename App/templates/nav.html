@@ -1,35 +1,29 @@
 {% load static %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
 
-</head>
-<body>
+
     <nav class="navbar">
         <a href="#" class="logo">B@IT</a>
         <div class="nav-links">
             <ul>
                 <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="#">A propos de nous</a></li>
-                <li><a href="#">Contactez-nous</a></li>
-                <li><a href="{% url 'register' %}">Creer un compte</a></li>
-                <li><a href="#">se connectez</a></li>
+                <li class="active"><a href="{% url 'login_view' %}">A propos de nous</a></li>
+                <li class="active"><a href="#">Contactez-nous</a></li>
+                <li class="active"><a href="{% url 'register' %}">Creer un compte</a></li>
+                <li class="active"><a href="{% url 'login_view' %}">se connectez</a></li>
             </ul>
         </div>
         <img style="width: 100px;height: 100px;" src="static/css/menu.png" alt="menu hamburger" class="menu-hamburger">
     </nav>
-    <header></header>
+    {% block content %}
+
+        {% endblock %}
     
-</body>
+
 <script>
     const menuhamburger =document.querySelector(".menu-hamburger")
     const navlinks=document.querySelector(".nav-links")
     menuhamburger.addEventListener('click',()=>{navlinks.classList.toggle('mobile-menu')})
 </script>
-</html>

@@ -1,18 +1,17 @@
-
+{% extends "nav.html" %}
+{% block content %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Formulaire de connexion</title>
 
         <link rel="stylesheet" href="{% static 'css/style-login.css' %}">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    
-    <body class="login">
+        <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
+      
+    <div class="login">
         <div class="wrapper">
             <form  method="POST" action="">
                 <h1>Connexion</h1>
@@ -37,5 +36,7 @@
                     </div>
             </form>
         </div>
-    </body>
-</html>
+
+
+    </div>
+    {% endblock %}

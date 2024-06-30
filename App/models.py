@@ -27,6 +27,9 @@ class Projet(models.Model):
     date_debut=models.DateField(null=True)
     date_fin=models.DateField()
     description_projet=models.CharField(max_length=100,null=True)
+
+    def __str__(self):
+        return self.nom_projet if self.nom_projet else "Nom non spécifié"
 # 3
 class Rapport(models.Model):
     personnel=models.ForeignKey(Personnel,on_delete=models.CASCADE,null=True)
@@ -36,11 +39,13 @@ class Rapport(models.Model):
     date=models.DateField()
 # 4
 class Materiel(models.Model):
+    projet=models.ForeignKey(Projet,on_delete=models.CASCADE,null=True) 
     nom_materiel=models.CharField(max_length=100,null=True)
     type_materiel=models.CharField(max_length=100,null=True)
     quantite_materiel=models.CharField(max_length=100,null=True)
-    qualite=models.CharField(max_length=100,null=True)   
-    projet=models.ForeignKey(Projet,on_delete=models.CASCADE,null=True)    
+    qualite=models.CharField(max_length=100,null=True)
+    date_d_enregistrement=models.DateField(null=True) 
+       
          
 
 
@@ -52,4 +57,5 @@ class Perdieme(models.Model) :
     type_perdieme= models.CharField(max_length=100,null=True)
     montant=models.IntegerField()
     date_transaction=models.DateField()
+    code_transaction_numero_bordereau=models.CharField(max_length=100,null=True)
  

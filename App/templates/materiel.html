@@ -1,49 +1,46 @@
-{% extends "base.html" %}
+{% extends "nav.html" %}
+{% load static %}
 {% block content%}
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<br><br><br><br><br><br>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>B@IT</title>
-  </head>
-  <body>
-    <div class="container1" style="margin-left: 2cm;">
-      <h1 style="margin-left: 6cm;">Enregistre la nouvelle produit</h1><hr>
-      <form style="margin-left: 1cm;" action="{% url 'envoyrec' %}" method="post">
-          {% csrf_token %}
-          <div class="part1">
-            <div class="input-data">
+    <title>Liste des projets</title>
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">	
+    <link rel="stylesheet" href="{% static 'css/ss.css' %}">
+    <div class="center-text">
+    <h1>Liste des materiels</h1><a href="{% url 'ajoutmateriel' %}">Ajouter un materiel</a>
+    </div>
+    <div class="center-text">
+        <table><thead><tr>
+            <th>Id</th><th>Nom de materiel</th><th>Nom de Projet</th><th>Type de materiel</th>
+            <th>Quantites</th><th>Qualite</th><th>Date d'enregistrement</th><th>Actions</th>
+        </tr></thead>
+    
+    
+        <tbody>
+        {% for mat in materiels %}
+        
+        <tr>
+           <td> {{ mat.id}}</td>
+           
+            <td>{{ mat.nom_materiel}} </td>
+            <td>{{ mat.projet.nom_projet}}</td>
             
-          <label for="">Nom de produit</label><br><br>
-          <div class="underline"></div>
-          <input type="text" name="nom">
-        </div>
-        <div class="input-data">
-          <label for="">Qualite</label>
-        <div class="underline"></div>
-          <input type="text" name="num">
+            <td>{{ mat.type_materiel}}</td>
+            <td>{{ mat.quantite_materiel}}</td>
+            <td>{{ mat.qualite}}</td>
+            <td>{{mat.date_d_enregistrement}}</td>
 
-        <div class="part2">
-          <label for="">Date d'entree</label><br><br>
-          <input type="date" name="dateentrant" cols="100"><br><br>
-          
-        </div> <br>
-          <button type="submit" id="new3">Enregistre</button>
-      </form>
-  </div>
-   
+            <td>
+            <a href="{% url 'editerMateriel' mat.pk %}">Modifier</a>
+            <a href="{% url 'effacer_materiel' mat.pk %}">Supprimer</a></td><br>
+        </tr>
+       
+        {% endfor %}
+    </tbody>
+</table>
+<!-- Par exemple dans votre template principal -->
+<a href="{% url 'print_materiel' %}">Imprimer la liste des materiels</a>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
-{% endblock %}
+</div>
+    
+    {% endblock%}

@@ -11,16 +11,28 @@ urlpatterns = [
     path('register/',views.register ,name='register' ),
     path('home/',views.home,name='home' ),
    
-    path('chef/',views.chef,name='chef' ),
+    path('control/',views.control,name='control' ),
     path('chef_equipe/',views.responsables,name='responsables' ),
   
     path('projet/',views.liste_des_projets,name='listedesprojet'),
     path('personnel/',views.liste_des_personnel,name='liste_personnel' ),
     path('Ajouter_personnel/',views.ajouter_personnel,name='AjouterPersonnel' ),
     path('editer_personnel<int:pk>/',views.edit_personnel,name='editerpersonnel'),
+    path('supprimer_personn<int:pk>/',views.supprimer_personnel,name='supprimer_les_personnel'),
     path('creer_projet',views.creer_projet,name='creer' ),
     path('editer_projet<int:pk>/',views.edit_projet,name='editer'),
     path('supprimer_projet<int:pk>/',views.supprimer_projet,name='effacer'),
+    path('materiel',views.liste_materiel,name='liste_materiel' ),
+    path('Ajouter_un_materiel',views.ajouter_materiel,name='ajoutmateriel' ),
+    path('editermat<int:pk>/',views.editer_materiel, name='editerMateriel'),
+    path('supprimermateriel<int:pk>/',views.supprimer_materiel,name='effacer_materiel'),
+    path('print/', views.print_materiel, name='print_materiel'),
+
+
+
+
+
+    path('navbar',views.navigation,name='navbar' ),
     
 
     

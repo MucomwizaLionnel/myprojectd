@@ -74,7 +74,7 @@ def login_view(request):
                 if user.is_superuser or 'personnel' in groups:
                      return redirect(index) #on connecte l'utilisateur
                 if user.is_superuser or 'chef' in groups:
-                    return redirect(chef) #on connecte l'utilisateur
+                    return redirect(control) #on connecte l'utilisateur
                 if 'responsable' in groups:
                     return redirect(responsables) #on connecte l'utilisateur
                 if 'personnel' in groups:
@@ -89,7 +89,7 @@ def login_view(request):
     return render(request, 'login.html', locals())
         
 def home(request):
-    return render(request,'homepage.html')
+    return render(request,'index.html')
 def liste_des_personnel(request):
     personnels=Personnel.objects.all()
     return render(request,'liste_personnel.html',{'personnels': personnels})  
@@ -112,8 +112,14 @@ def edit_personnel(request,pk):
     else:
         form=Personnel_form(instance=personnels)
 
-    return render(request,'projet_form.html',{'form':form})
+    return render(request,'personnel_form.html',{'form':form})
    
+def supprimer_personnel(request,pk):
+    personnels=get_object_or_404(Personnel,pk=pk)
+    if request.method=='POST':
+        personnels.delete()
+        return redirect('liste_personnel')
+    return render(request,'supprimer_personnel.html',{'personnels':personnels})
 
 
 def liste_des_projets(request):
@@ -150,14 +156,47 @@ def supprimer_projet(request,pk):
         projets.delete()
         return redirect('listedesprojet')
     return render(request, 'supprimer_projet.html', {'projets': projets})
+def liste_materiel(request):
+    materiels=Materiel.objects.all()
+    return render(request,'materiel.html',{'materiels':materiels})
+
+def ajouter_materiel(request):
+    if request.method=='POST':
+        form=Materiel_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('liste_materiel')
+    else:
+        form=Materiel_form()
+
+    return render(request,'materiel_form.html',{'form':form})    
+
+def editer_materiel(request,pk):
+    materiels=get_object_or_404(Materiel,pk=pk)
+    if request.method=='POST':
+        form=Materiel_form(request.POST,instance=materiels)
+        if form.is_valid():
+            form.save()
+            return redirect('liste_materiel')
+    else:
+        form=Materiel_form(instance=materiels)
+
+    return render(request,'materiel_form.html',{'form':form})   
+
+def supprimer_materiel(request,pk):
+    materiels=get_object_or_404(Materiel,pk=pk)
+    if request.method=='POST':
+        materiels.delete()
+        return redirect('liste_materiel')
+    return render(request, 'supprimer_mat.html', {'materiels':materiels})
 
 
 
 
+def control(request):
+      
 
-
-def chef(request):
-    return render(request,'chef.html')
+     return render(request,'control.html')
  
 def responsables(request):
     return render(request,'chef_equipe.html')    
@@ -172,3 +211,10 @@ def charge(request):
 def rapport(request):
     return render(request,'rapport.html') 
 
+
+
+def navigation(request):
+    return render(request,'nav.html')
+def print_materiel(request):
+    materiels = Materiel.objects.all()
+    return render(request, 'print.html', {'materiels': materiels})

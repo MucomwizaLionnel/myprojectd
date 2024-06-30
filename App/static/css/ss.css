@@ -1,0 +1,77 @@
+.center-text {
+    text-align: center;
+    
+}
+body{
+    background-color: beige;
+}
+.input{
+    padding-left: 100px;
+}
+table {
+    
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+       
+        tr:hover {
+            background-color: #3da777;
+        }
+/* Appliquer des styles au formulaire */
+/* CSS */
+form {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement par défaut */
+    max-width: 400px; /* Ajustez selon vos besoins */
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+form p {
+    display: flex;
+    align-items: center; /* Aligne les éléments sur la même ligne */
+    margin-bottom: 10px; /* Espacement entre chaque paire label-input */
+}
+
+form label {
+    flex: 1; /* Fait en sorte que le label occupe tout l'espace disponible */
+    margin-right: 10px; /* Espacement entre le label et le champ de saisie */
+    font-size: 15px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    flex: 2; /* Fait en sorte que le champ de saisie occupe tout l'espace disponible */
+    padding: 8px;
+    border-radius: 24%;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media print {
+    .no-print {
+        display: none;
+    }
+}
